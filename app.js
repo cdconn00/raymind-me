@@ -48,6 +48,11 @@ app.use(function(req, res, next){
 	res.locals.success = req.flash("success");
 
 	next();
-}); 
+});
+
+// test route
+app.get("/", function(req, res){
+	res.render("index");
+});
 
 app.listen("3000");
