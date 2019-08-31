@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+<div class="container">
+	<h1 class="text-center mt-3 mb-5">
+		<%=currentUser.firstName%>'s Lists
+	</h1>
+	<% lists.forEach(function(list) { %>
+		<div class="card my-3">
+			<div class="card-header">
+				<%=list.name%>
+			</div>
+			<div class="card-body">
+				<p class="card-text"><%=list.descr%></p>
+				<a href="/lists/<%=list._id%>" class="btn btn-primary">View List</a>
+			</div>
+		</div>
+	<% });%>
+	<a class="btn btn-xl btn-success float-right" href="/lists/new">Add New List</a>
+</div>
+<% include ../partials/footer %>

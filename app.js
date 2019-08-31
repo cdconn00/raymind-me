@@ -55,6 +55,9 @@ app.use(function(req, res, next){
 	next();
 });
 
+// route configuration
 app.use(indexRoutes);
+app.use("/lists", listRoutes);
+
 
 app.listen("3000");

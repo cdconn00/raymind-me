@@ -36,6 +36,14 @@
 		</nav>
 	</div>
 	<div class="container">
+		<% if(error && error.length > 0) {%>
+			<div class="alert alert-danger" role="alert"><%= error %></div>
+		<%}%>
+		<% if(success && success.length > 0) {%>
+			<div class="alert alert-success" role="alert"><%= success %></div>
+		<%}%>
+	</div>
+	<div class="container">
 		<div class="container home-page-box text-center mt-4 pt-2">
 			<h1 class="main-title">Welcome to Raymind!</h1>
 			<a class="btn btn-xl btn-primary" href="/register">Get Started</a>
