@@ -11,6 +11,11 @@ var express        = require("express"),
 	List           = require("./models/lists.js"),
 	Task           = require("./models/tasks.js");
 
+// requiring routes
+var listRoutes     = require("./routes/lists"),
+	taskRoutes     = require("./routes/tasks"),	
+	indexRoutes    = require("./routes/index");
+
 // Connect to db, use and set settings
 mongoose.connect("mongodb+srv://cdconn00:" + process.env.DBPASS + "@cluster0-u4cso.mongodb.net/test?retryWrites=true&w=majority", { 
 	useNewUrlParser: true,
@@ -50,9 +55,6 @@ app.use(function(req, res, next){
 	next();
 });
 
-// test route
-app.get("/", function(req, res){
-	res.render("index");
-});
+app.use(indexRoutes);
 
 app.listen("3000");

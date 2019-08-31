@@ -5,3 +5,8 @@ body.homepage {
     -o-background-size: cover;
     background-size: cover;
 }
+
+.main-title{
+	font-family: 'Satisfy', cursive;
+	font-size: 5rem;
+}

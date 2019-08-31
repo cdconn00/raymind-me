@@ -1,2 +1,26 @@
 <% include partials/header %>
+<div class="container">
+	<h1 class="text-center mt-3">
+		Login to Raymind
+	</h1>
+	<div class="row">
+		<div class="col-8 mt-3 mx-auto">
+			<form action="/login" method="POST">
+				<label for="email">Email</label>
+				<div class="form-group">
+					<input class="form-control" type="email" id="email" name="username" placeholder="info@raymind.me" required>
+				</div>
+				
+				<label for="password">Password</label>
+				<div class="form-group">
+					<input class="form-control" type="password" id="password" name="password" required>
+				</div>
+				<button class="btn btn-lg btn-primary btn-block">
+					Login
+				</button>
+				<a class="btn btn-lg btn-outline-secondary btn-block" href="/">Back</a>
+			</form>
+		</div>
+	</div>
+</div>
 <% include partials/footer %>
