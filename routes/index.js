@@ -29,7 +29,7 @@ router.post("/register", function(req, res){
 		}
 		else{
 			passport.authenticate("local")(req, res, function(){
-				req.flash("success", "Welcome to RayMind, " + createdUser.username + "!")
+				req.flash("success", "Welcome to RayMind, " + createdUser.firstName + "!")
 				res.redirect("/lists");
 			})
 		}

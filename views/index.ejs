@@ -26,9 +26,8 @@
 					<li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
 					<li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
 				<%}else{%>
-					<li class="nav-item"><a href="#" class="nav-link">Howdy, <%=currentUser.firstName%></a></li>
+					<li class="nav-item"><a href="#" class="nav-link">Howdy, <%=currentUser.firstName%>!</a></li>
 					<li class="nav-item"><a href="/lists" class="nav-link">View Lists</a></li>
-					<li class="nav-item"><a href="/tasks" class="nav-link">X Tasks Due within 24 Hours</a></li>
 					<li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
 				<%}%>
 			</ul>
