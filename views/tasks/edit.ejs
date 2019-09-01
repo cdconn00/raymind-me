@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+<div class="container">
+	<h1 class="text-center mt-3">
+		Edit Task
+	</h1>
+	<div class="row">
+		<div class="col-8 mt-3 mx-auto">
+			<form action="/lists/<%=list_id%>/tasks/<%=task._id%>?_method=PUT" method="POST">
+				<label for="name">Task Name</label>
+				<div class="form-group">
+					<input class="form-control" type="text" id="name" name="task[name]" value="<%=task.name%>" required>	
+				</div>
+				
+				<label for="descr">Task Description</label>
+				<div class="form-group">
+					<textarea name="task[descr]" class="form-control" id="descr" required><%=task.descr%></textarea>
+				</div>
+				
+				<label for="dueDate">Due Date</label>
+				<div class="form-group">
+					<input class="form-control" type="date" id="dueDate" name="task[dueDate]" value="<%=task.dueDate%>" required>	
+				</div>
+				
+				<label for="reminderDate">Reminder Date</label>
+				<div class="form-group">
+					<input class="form-control" type="date" id="reminderDate" name="task[reminderDate]" value="<%=task.reminderDate%>" required>	
+				</div>
+				
+				<button class="btn btn-lg btn-primary btn-block">
+					Update Task
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+<% include ../partials/footer %>

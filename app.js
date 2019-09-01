@@ -17,7 +17,7 @@ var listRoutes     = require("./routes/lists"),
 	indexRoutes    = require("./routes/index");
 
 // Connect to db, use and set settings
-mongoose.connect("mongodb+srv://cdconn00:" + process.env.DBPASS + "@cluster0-u4cso.mongodb.net/test?retryWrites=true&w=majority", { 
+mongoose.connect(process.env.DBCONNECTSTRING, { 
 	useNewUrlParser: true,
 	useCreateIndex: true}).then(() => {
 	console.log("Connected to DB");
@@ -58,6 +58,7 @@ app.use(function(req, res, next){
 // route configuration
 app.use(indexRoutes);
 app.use("/lists", listRoutes);
+app.use("/lists/:id/tasks", taskRoutes);
 
 
 app.listen("3000");

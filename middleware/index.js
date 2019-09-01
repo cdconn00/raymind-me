@@ -15,7 +15,7 @@ middleWareObj.checkListOwnership = function (req, res, next){
 					next();
 				}
 				else{
-					req.flash("error", "Whoops! We couldn't find that list");
+					req.flash("error", "Whoops! We couldn't find that list.");
 					res.redirect("back");
 				}
 			}
@@ -36,17 +36,17 @@ middleWareObj.checkTaskOwnership = function (req, res, next){
 		Task.findById(req.params.task_id, function(err, foundTask){
 			if(!err){
 				if(!foundTask){
-					req.flash("error", "Comment not found.");
+					req.flash("error", "Task not found.");
 					res.redirect("back");
 				}
 				
 				if(foundTask.user.id.equals(req.user._id)){
-					req.flash("error", "Whoops! You don't own that comment.");
 					next();
 				}
-				else
-					req.flash("error", "Whoops! We couldn't find that comment.");
+				else{
+					req.flash("error", "Whoops! You don't own that task.");
 					res.redirect("back");
+				}
 			}
 			else{
 				console.log(err);

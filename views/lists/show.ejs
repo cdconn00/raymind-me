@@ -17,10 +17,13 @@
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title"><%=task.name%></h5>
-						<p class="card-text"><%=task.desc%></p>	
-						<p class="card-text font-weight-bold">Due: <%=task.dueDate%></p>
-						<p class="card-text">Reminder on: <%=task.reminderDate%></p>
-						<a href="/lists/<%=list._id%>/tasks/<%=task._id%>" class="btn btn-primary">View Task</a>
+						<p class="card-text"><%=task.descr%></p>	
+						<p class="card-text font-weight-bold">Due: <%=task.dueDate.toLocaleDateString();%></p>
+						<p class="card-text">Reminder on: <%=task.reminderDate.toLocaleDateString();%></p>
+						<form class="inline-form" action="/lists/<%=list._id%>/tasks/<%=task._id%>?_method=DELETE" method="POST">
+							<button class="btn btn-sm btn-success">Complete Task</button>
+						</form>
+						<a class="btn btn-sm btn-warning" href="/lists/<%=list._id%>/tasks/<%=task._id%>/edit">Edit</a>
 					</div>
 				</div>
 			</div>
