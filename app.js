@@ -9,15 +9,17 @@ var express        = require("express"),
 	LocalStrategy  = require("passport-local"),
 	User           = require("./models/users.js"),
 	List           = require("./models/lists.js"),
-	Task           = require("./models/tasks.js");
+	Task           = require("./models/tasks.js"),
+	schedule       = require("node-schedule"),
+	Email          = require("./email/email");
 
 // requiring routes
 var listRoutes     = require("./routes/lists"),
-	taskRoutes     = require("./routes/tasks"),	
+	taskRoutes     = require("./routes/tasks"),
 	indexRoutes    = require("./routes/index");
 
 // Connect to db, use and set settings
-mongoose.connect(process.env.DBCONNECTSTRING, { 
+mongoose.connect(process.env.DBCONNECTSTRING, {
 	useNewUrlParser: true,
 	useCreateIndex: true}).then(() => {
 	console.log("Connected to DB");
@@ -44,12 +46,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(function(req, res, next){
+app.use(function(req, res, next) {
 	// stores current user
 	res.locals.currentUser = req.user;
-	
+
 	// stores flashes for error/success messages
-	res.locals.error = req.flash("error");	
+	res.locals.error = req.flash("error");
 	res.locals.success = req.flash("success");
 
 	next();
@@ -60,5 +62,9 @@ app.use(indexRoutes);
 app.use("/lists", listRoutes);
 app.use("/lists/:id/tasks", taskRoutes);
 
+// schedule reminder emails to be sent at 9a CT daily
+schedule.scheduleJob("0 0 13 * * *", function() {
+	Email.sendDailyReminderEmails();
+});
 
 app.listen(process.env.PORT);

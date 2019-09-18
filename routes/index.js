@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require("passport");
 var middleware = require("../middleware");
 var User = require("../models/users");
+var Email = require("../email/email");
 
 // root route
 router.get("/", function(req, res){
@@ -29,6 +30,7 @@ router.post("/register", function(req, res){
 		}
 		else{
 			passport.authenticate("local")(req, res, function(){
+				Email.sendRegistrationEmail(createdUser.username, createdUser.firstName);
 				req.flash("success", "Welcome to RayMind, " + createdUser.firstName + "!")
 				res.redirect("/lists");
 			})
