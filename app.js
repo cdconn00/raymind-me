@@ -63,7 +63,7 @@ app.use(indexRoutes);
 app.use("/lists", listRoutes);
 app.use("/lists/:id/tasks", taskRoutes);
 
-// schedule reminder emails to be sent at 9a CT daily
+// schedule reminder emails to be sent at 8a CT daily
 schedule.scheduleJob("0 0 13 * * *", function() {
 	Email.sendDailyReminderEmails();
 });
