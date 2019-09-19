@@ -63,8 +63,6 @@ app.use(indexRoutes);
 app.use("/lists", listRoutes);
 app.use("/lists/:id/tasks", taskRoutes);
 
-Email.sendDailyReminderEmails();
-
 // schedule reminder emails to be sent at 9a CT daily
 schedule.scheduleJob("0 0 13 * * *", function() {
 	Email.sendDailyReminderEmails();
