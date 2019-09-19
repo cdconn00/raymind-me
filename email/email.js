@@ -33,11 +33,13 @@ mailerObj.sendDailyReminderEmails = function(){
 	Task.find({reminderDate: date}, function(err, foundTasks){
 		if (!err){
 			foundTasks.forEach(function(task){
-				if (task.user.id){
-					User.findById(task.user.id, function(err, foundUser){
+				User.findById(task.user.id, function(err, foundUser){
+					if (foundUser == null){
+						return;
+					} else {
 						mailerObj.sendReminderEmail(foundUser.username, foundUser.firstName, task.dueDate.toLocaleDateString(), task.name, task.descr);
-					});
-				}
+					}
+				});
 			});
 		}
 	});
