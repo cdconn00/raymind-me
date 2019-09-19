@@ -39,6 +39,8 @@ mailerObj.sendDailyReminderEmails = function(){
 			});
 		}
 	});
+	
+	console.log("Daily email reminder sent.");
 }
 
 // send reminder email about a task with a reminder date that is today

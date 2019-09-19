@@ -1,6 +1,7 @@
 // dependencies
 var express        = require("express"),
 	app            = express(),
+	session        = require("express-session"),
 	bodyParser     = require("body-parser"),
 	mongoose       = require("mongoose"),
 	flash          = require("connect-flash"),
@@ -61,6 +62,8 @@ app.use(function(req, res, next){
 app.use(indexRoutes);
 app.use("/lists", listRoutes);
 app.use("/lists/:id/tasks", taskRoutes);
+
+Email.sendDailyReminderEmails();
 
 // schedule reminder emails to be sent at 9a CT daily
 schedule.scheduleJob("0 0 13 * * *", function() {
