@@ -18,18 +18,21 @@
 				
 				<label for="dueDate">Due Date</label>
 				<div class="form-group">
-					<input class="form-control" type="date" id="dueDate" name="task[dueDate]" value="<%=task.dueDate%>" required>	
+					<input class="form-control" type="date" id="dueDate" name="task[dueDate]" value="<%=task.dueDate.toISOString().split('T')[0]%>" required>	
 				</div>
 				
 				<label for="reminderDate">Reminder Date</label>
 				<div class="form-group">
-					<input class="form-control" type="date" id="reminderDate" name="task[reminderDate]" value="<%=task.reminderDate%>" required>	
+					<input class="form-control" type="date" id="reminderDate" name="task[reminderDate]" value="<%=task.reminderDate.toISOString().split('T')[0]%>" required>	
 				</div>
 				
 				<button class="btn btn-lg btn-primary btn-block">
 					Update Task
 				</button>
 			</form>
+			<a class="btn btn-lg btn-outline-danger btn-block mt-3" href="/lists/<%=list_id%>">
+				Cancel
+			</a>
 		</div>
 	</div>
 </div>

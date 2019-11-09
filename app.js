@@ -22,7 +22,9 @@ var listRoutes     = require("./routes/lists"),
 // Connect to db, use and set settings
 mongoose.connect(process.env.DBCONNECTSTRING, {
 	useNewUrlParser: true,
-	useCreateIndex: true}).then(() => {
+	useCreateIndex: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false}).then(() => {
 	console.log("Connected to DB");
 }).catch(err => {
 	console.log(err.message);
