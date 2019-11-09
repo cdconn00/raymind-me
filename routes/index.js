@@ -11,7 +11,7 @@ router.get("/", function(req, res){
 });
 
 // show registration form
-router.get("/register", function(req, res){
+router.get("/register", middleware.isNotLoggedIn, function(req, res){
 	res.render("register");
 })
 
@@ -39,7 +39,7 @@ router.post("/register", function(req, res){
 });
 
 // show login form
-router.get("/login", function(req, res){
+router.get("/login", middleware.isNotLoggedIn, function(req, res){
 	res.render("login");
 });
 

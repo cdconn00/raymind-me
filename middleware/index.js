@@ -70,4 +70,14 @@ middleWareObj.isLoggedIn = function(req, res, next){
 	}
 }
 
+middleWareObj.isNotLoggedIn = function(req, res, next){
+	if(!req.isAuthenticated()){
+		return next();
+	}
+	else{
+		req.flash("error", "You cant access this page");
+		res.redirect("back");
+	}
+}
+
 module.exports = middleWareObj;
