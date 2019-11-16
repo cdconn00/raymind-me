@@ -1,27 +1,25 @@
 'use strict';
-const nodemailer = require('nodemailer');
+const mailgun = require("mailgun-js");
 var User = require("../models/users");
 var Task = require("../models/tasks");
 var mailerObj = {};
 
-// create reusable transporter object
-let transporter = nodemailer.createTransport({
-	host: 'smtp.gmail.com',
-	port: 465,
-	secure: true,
-	auth: {
-		user: process.env.EMAILUSER,
-		pass: process.env.EMAILPASS
-	}
-});
+const DOMAIN = process.env.EMAILDOMAIN;
+const mg = mailgun({apiKey: process.env.EMAILAPIKEY, domain: DOMAIN});
 
 // send registration email
 mailerObj.sendRegistrationEmail = function(email, userName){
-	transporter.sendMail({
+	const data = {
 		from: 'Raymind.Me <info@raymind.me>', // sender address
 		to: email, // reciever
 		subject: 'Welcome to Raymind.Me, ' + userName +  '! ✔', // Subject line
 		html: '<p><b>Welcome to Raymind.Me, ' + userName + '!</b></p><p><a href="http://raymind.me">Vist Raymind.Me</a></p>' // html body
+	};
+	
+	mg.messages().send(data, function (error, body) {
+		if(error){
+			console.log(error);
+		}
 	});
 }
 
@@ -49,14 +47,18 @@ mailerObj.sendDailyReminderEmails = function(){
 
 // send reminder email about a task with a reminder date that is today
 mailerObj.sendReminderEmail = function(email, userName, dueDate, taskName, taskDescr){
-	transporter.sendMail({
-		from: 'Raymind.Me <info@raymind.me>', // sender address
-		to: email, // reciever
+	const data = {
+		from: 'Raymind.Me <info@raymind.me>',
+		to: email,
 		subject: 'Raymind-er: ' + taskName + ' is due on ' + dueDate + '!', // Subject line
-		text: 'Hello world?', // plain text body
-		html: "<html><head> <style> @import url(\"https://fonts.googleapis.com/css?family=Manjari&display=swap\")</style> <title></title> </head> <body style=\"text-align: center; border: 5px solid #EE82EE; width: 50%; margin: auto; margin-top: 3rem; border-radius: 2.5%; font-family: 'Manjari', sans-serif;\"> <div style=\"margin: auto auto\"> <h1>Raymind-er!</h1> <p>Howdy, " + userName +"! This is a friendly reminder of your task:</p><p><b>" + taskName + "</b> - " + taskDescr + "</p><p><b>Due on: " + dueDate + "</b></p><p><a href=\"http://raymind.me\">Vist Raymind.Me</a></p></div></body></html>" // html body
+		html: "<html><head> <style> @import url(\"https://fonts.googleapis.com/css?family=Manjari&display=swap\")</style> <title></title> </head> <body style=\"text-align: center; border: 5px solid #EE82EE; width: 50%; margin: auto; margin-top: 3rem; border-radius: 2.5%; font-family: 'Manjari', sans-serif;\"> <div style=\"margin: auto auto\"> <h1>Raymind-er!</h1> <p>Howdy, " + userName +"! This is a friendly reminder of your task:</p><p><b>" + taskName + "</b> - " + taskDescr + "</p><p><b>Due on: " + dueDate + "</b></p><p><a href=\"http://raymind.me\">Vist Raymind.Me</a></p></div></body></html>"
+	};
+	
+	mg.messages().send(data, function (error, body) {
+		if(error){
+			console.log(error);
+		}
 	});
 }
-
 
 module.exports = mailerObj;
