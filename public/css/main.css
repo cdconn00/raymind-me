@@ -1,16 +1,58 @@
+/**** Homepage ****/
 body.homepage {
-	background: url("../img/ocean-background.jpg") no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+	background: rgb(59,92,203);
+	background: radial-gradient(circle, rgba(59,92,203,1) 14%, rgba(63,129,242,0.9251050762101716) 81%, rgba(87,63,242,1) 100%);
+	font-family: 'Open Sans', sans-serif;
 }
 
 .main-title{
-	font-family: 'Satisfy', cursive;
-	font-size: 5rem;
+	font-family: 'Yellowtail', cursive;
+	font-size: 12rem;
+	color: #fff;
 }
 
+.home-page-box {
+	margin-top: 7rem;
+}
+
+
+/**** Navbar ****/ 
+.navbar-main{
+	background-color: #373DAB;
+	height: 5rem;
+	padding: 0 12rem;
+	box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.navbar-light .navbar-brand {
+	font-size: 30px;
+	color: #fff;
+	font-family: 'Kanit', sans-serif;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	font-size: 22px;
+	color: #fff;
+	font-family: 'Kanit', sans-serif;
+}
+
+.navbar-light .navbar-brand:hover{
+	color: #fff;
+}
+
+.navbar-light .navbar-brand .triadic-2 {
+	color: #f23f81;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+	color: #f23f81;
+}
+
+.navbar-light .navbar-nav .nav-link:focus {
+	color: #f23f81;
+}
+
+/**** Forms ****/
 textarea {
      width: 100%;
      -webkit-box-sizing: border-box; 
@@ -20,4 +62,50 @@ textarea {
 
 .inline-form{
 	display: inline;
+}
+
+.triadic-2 {
+	color: #f23f81;
+}
+
+/**** General Syles ****/
+.triadic {
+	color: #b03ff2;
+}
+
+.sub-heading{
+	size: 7rem;
+	color: #fff;
+	font-family: 'Kanit', sans-serif;
+}
+
+.btn-outline-light:hover {
+	color: rgb(59,92,203);
+}
+
+#actionbtn{
+	padding: .5rem 4rem;
+}
+
+.btn-primary {
+	background-color: #373DAB;
+}
+
+/**** Responsiveness ****/
+@media  (max-width: 992px) {
+	.main-title{
+	font-size: 8rem;
+	}
+}
+
+@media  (max-width: 805px) {
+	.main-title{
+		font-size: 6rem;
+	}
+}
+
+@media  (max-width: 660px) {
+	.navbar-main{
+		padding: 0 6rem;
+	}
 }
