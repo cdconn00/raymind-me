@@ -1,3 +1,4 @@
+/**** Homepage ****/
 body.homepage {
 	background: rgb(59,92,203);
 	background: radial-gradient(circle, rgba(59,92,203,1) 14%, rgba(63,129,242,0.9251050762101716) 81%, rgba(87,63,242,1) 100%);
@@ -14,17 +15,8 @@ body.homepage {
 	margin-top: 7rem;
 }
 
-textarea {
-     width: 100%;
-     -webkit-box-sizing: border-box; 
-     -moz-box-sizing: border-box;    
-     box-sizing: border-box;         
-}
 
-.inline-form{
-	display: inline;
-}
-
+/**** Navbar ****/ 
 .navbar-main{
 	background-color: #373DAB;
 	height: 5rem;
@@ -44,14 +36,6 @@ textarea {
 	font-family: 'Kanit', sans-serif;
 }
 
-.triadic-2 {
-	color: #f23f81;
-}
-
-.triadic {
-	color: #b03ff2;
-}
-
 .navbar-light .navbar-brand:hover{
 	color: #fff;
 }
@@ -64,6 +48,31 @@ textarea {
 	color: #f23f81;
 }
 
+.navbar-light .navbar-nav .nav-link:focus {
+	color: #f23f81;
+}
+
+/**** Forms ****/
+textarea {
+     width: 100%;
+     -webkit-box-sizing: border-box; 
+     -moz-box-sizing: border-box;    
+     box-sizing: border-box;         
+}
+
+.inline-form{
+	display: inline;
+}
+
+.triadic-2 {
+	color: #f23f81;
+}
+
+/**** General Syles ****/
+.triadic {
+	color: #b03ff2;
+}
+
 .sub-heading{
 	size: 7rem;
 	color: #fff;
@@ -71,13 +80,18 @@ textarea {
 }
 
 .btn-outline-light:hover {
-	color: rgba(0, 0, 0, 0);
+	color: rgb(59,92,203);
 }
 
 #actionbtn{
 	padding: .5rem 4rem;
 }
 
+.btn-primary {
+	background-color: #373DAB;
+}
+
+/**** Responsiveness ****/
 @media  (max-width: 992px) {
 	.main-title{
 	font-size: 8rem;
